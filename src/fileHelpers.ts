@@ -26,15 +26,18 @@ const generateCommandsFromInputLines = (line: string) => {
 
 
 export async function processLineByLine(filePath: string) {
-    const fileStream = fs.createReadStream(path.join(__dirname, filePath));
-    const rl = readline.createInterface({
-        input: fileStream,
-        crlfDelay: Infinity
-    });
-
-    for await (const line of rl) {
-        // Each line in input.txt will be successively available here as `line`.
-        generateCommandsFromInputLines(line)
+    try {
+        const fileStream = fs.createReadStream(path.join(__dirname, filePath));
+        const rl = readline.createInterface({
+            input: fileStream,
+            crlfDelay: Infinity
+        });
+        for await (const line of rl) {
+            // Each line in input.txt will be successively available here as `line`.
+            generateCommandsFromInputLines(line)
+        }
+    } catch (e) {
+        throw new Error(e)
     }
 }
 

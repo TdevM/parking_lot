@@ -1,5 +1,9 @@
 import {processLineByLine} from './fileHelpers'
 
-processLineByLine(`../${process.argv.slice(2)}`).catch((e) => {
+const fileInput = process.argv.slice(2)
+if (!fileInput.length) {
+    throw new Error(`Missing param file_inputs.txt`)
+}
+processLineByLine(`../${fileInput}`).catch((e) => {
     console.log(e)
 })
