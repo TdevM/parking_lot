@@ -34,7 +34,7 @@ export const addVehicle = (vehicleNumber: string) => {
     console.log(`Allocated slot number: ${vacantSlots.get(vehicleNumber)}`)
 }
 
-export const leaveVehicle = (vehicleNumber: string, hours: number) => {
+export const removeVehicle = (vehicleNumber: string, hours: number) => {
     if (!vacantSlots.get(vehicleNumber)) {
         console.log(`Registration number ${vehicleNumber} not found`)
         return

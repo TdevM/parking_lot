@@ -1,22 +1,18 @@
+import {addVehicle, createParkingLot, printParkingLot, removeVehicle} from "./data";
 
 export const populateData = (size: number) => {
-
+    return createParkingLot(size)
 }
 
-export const parkVehicle = () => {
-
+export const parkVehicle = (vehicleNumber: string) => {
+    return addVehicle(vehicleNumber)
 }
 
-export const leaveVehicle = () => {
-
+export const leaveVehicle = (vehicleNumber: string, hours: number) => {
+    return removeVehicle(vehicleNumber, hours)
 }
 
-export const printParkingLot = () => {
-
+export const status = () => {
+    return printParkingLot()
 }
 
-export const parkingCommandsMapping = {
-    park: {action: parkVehicle, attribute: 1},
-    leave: {action: leaveVehicle, attribute: 1},
-    status: {action: printParkingLot, attribute: 1},
-} as any
