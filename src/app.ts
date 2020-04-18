@@ -1,10 +1,18 @@
-import {generateDataSetFromFileData, leaveVehicle, parkVehicle, populateData, printParkingLot} from './helper'
+import * as fileHelper from './fileHelpers'
+import * as parkingHelper from "./parkingHelpers";
 
 
-populateData(6)
-printParkingLot()
-parkVehicle('KA-01-HH-1234', 1)
-parkVehicle('KA-01-HH-9999', 2)
-leaveVehicle('KA-01-HH-1234', 8)
-printParkingLot()
+parkingHelper.populateData(6)
+parkingHelper.printParkingLot()
+parkingHelper.parkVehicle('KA-01-HH-1234', 1)
+parkingHelper.parkVehicle('KA-01-HH-9999', 2)
+parkingHelper.parkVehicle('KA-01-BB-0001', 3)
+parkingHelper.parkVehicle('KA-01-HH-7777', 4)
+parkingHelper.parkVehicle('KA-01-HH-2701', 5)
+parkingHelper.parkVehicle('KA-01-HH-3141', 6)
+parkingHelper.leaveVehicle('KA-01-HH-3141', 8)
+parkingHelper.printParkingLot()
 
+
+
+parkingHelper.printParkingLot()
