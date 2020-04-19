@@ -1,7 +1,7 @@
-const addNumbers = (a, b) => {
-    return a + b
+const sayHelloWorld = (param) => {
+    return param
 }
 
-test('Should return sum', () => {
-    expect(addNumbers(999, 897)).toBe(1896)
+test('Should say hello word!', () => {
+    expect(sayHelloWorld('hello word!')).toBe('hello word!')
 })

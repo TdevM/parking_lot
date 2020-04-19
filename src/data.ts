@@ -5,9 +5,9 @@ const getNearestVacantSlot = () => {
     return freeSlots[0]
 }
 
-const calculateParkingCharges = (vehicleNumber: string, hoursParked: number) => {
+export const calculateParkingCharges = (vehicleNumber: string, hoursParked: number) => {
     if (hoursParked < 1) {
-        throw new Error('Parking hours should be greater than 0')
+        return 10
     }
     if (hoursParked <= 2) {
         return 10
@@ -22,6 +22,7 @@ export const createParkingLot = (size: number) => {
     for (let i = 1; i < size + 1; i++) {
         freeSlots.push(i)
     }
+    return freeSlots
 }
 
 export const addVehicle = (vehicleNumber: string) => {
