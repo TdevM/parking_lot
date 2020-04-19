@@ -46,7 +46,7 @@ export const removeVehicle = (vehicleNumber: string, hours: number) => {
     freeSlots.push(Number(parkingSpot))
     vacantSlots.delete(vehicleNumber)
     console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)
-    return vacantSlots
+    return freeSlots
 }
 
 export const printParkingLot = () => {
