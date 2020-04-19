@@ -1,5 +1,5 @@
-const vacantSlots = new Map<string, number>()
-const freeSlots: number[] = []
+export const vacantSlots = new Map<string, number>()
+export const freeSlots: number[] = []
 
 const getNearestVacantSlot = () => {
     return freeSlots[0]
@@ -33,6 +33,7 @@ export const addVehicle = (vehicleNumber: string) => {
     vacantSlots.set(vehicleNumber, getNearestVacantSlot())
     freeSlots.shift()
     console.log(`Allocated slot number: ${vacantSlots.get(vehicleNumber)}`)
+    return vacantSlots.get(vehicleNumber)
 }
 
 export const removeVehicle = (vehicleNumber: string, hours: number) => {
@@ -45,6 +46,7 @@ export const removeVehicle = (vehicleNumber: string, hours: number) => {
     freeSlots.push(Number(parkingSpot))
     vacantSlots.delete(vehicleNumber)
     console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)
+    return vacantSlots
 }
 
 export const printParkingLot = () => {
