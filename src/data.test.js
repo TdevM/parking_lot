@@ -1,6 +1,6 @@
 import {
     addVehicle,
-    calculateParkingCharges, createParkingLot, vacantSlots, freeSlots, removeVehicle
+    calculateParkingCharges, createParkingLot, removeVehicle, printParkingLot
 } from './data'
 
 
@@ -35,6 +35,33 @@ describe('Leave a vehicle.', () => {
 
     test('Should leave the vehicle at position 1 and return updated free slots.', () => {
         expect(removeVehicle('KA-01-HH-7777')).toEqual(expect.arrayContaining([1, 4]))
+    })
+})
+
+describe('Park a vehicle after parking lot have slots free.', () => {
+    test('Should park the vehicle returning allotted parking slot.', () => {
+        expect(addVehicle('NL-02-HH-4122')).toEqual(4)
+    })
+
+    test('Should park the vehicle returning allotted parking slot.', () => {
+        expect(addVehicle('AS-05-RT-8767')).toEqual(1)
+    })
+
+    test('Should refuse to park as parking lot is full.', () => {
+        expect(addVehicle('ML-09-CD-9981')).toEqual(undefined)
+    })
+
+})
+
+describe('Show parking lot status.', () => {
+    const occupiedSlots = new Map([
+        ['AS-05-RT-8767', 1],
+        ['KA-02-HH-5577', 2],
+        ['DL-02-HH-0987', 3],
+        ['NL-02-HH-4122', 4]])
+    test('Should match with status of both occupied and empty slots.', () => {
+        expect(printParkingLot().freeSlots).toEqual(expect.arrayContaining([]))
+        expect(printParkingLot().occupiedSlots).toEqual(occupiedSlots)
     })
 })
 

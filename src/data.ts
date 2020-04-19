@@ -1,5 +1,5 @@
-export const vacantSlots = new Map<string, number>()
-export const freeSlots: number[] = []
+const occupiedSlots = new Map<string, number>()
+const freeSlots: number[] = []
 
 const getNearestVacantSlot = () => {
     return freeSlots[0]
@@ -30,29 +30,30 @@ export const addVehicle = (vehicleNumber: string) => {
         console.log(`Sorry, parking lot is full`)
         return
     }
-    vacantSlots.set(vehicleNumber, getNearestVacantSlot())
+    occupiedSlots.set(vehicleNumber, getNearestVacantSlot())
     freeSlots.shift()
-    console.log(`Allocated slot number: ${vacantSlots.get(vehicleNumber)}`)
-    return vacantSlots.get(vehicleNumber)
+    console.log(`Allocated slot number: ${occupiedSlots.get(vehicleNumber)}`)
+    return occupiedSlots.get(vehicleNumber)
 }
 
 export const removeVehicle = (vehicleNumber: string, hours: number) => {
-    if (!vacantSlots.get(vehicleNumber)) {
+    if (!occupiedSlots.get(vehicleNumber)) {
         console.log(`Registration number ${vehicleNumber} not found`)
         return
     }
-    const parkingSpot = vacantSlots.get(vehicleNumber)
+    const parkingSpot = occupiedSlots.get(vehicleNumber)
     const charges = calculateParkingCharges(vehicleNumber, hours)
     freeSlots.push(Number(parkingSpot))
-    vacantSlots.delete(vehicleNumber)
+    occupiedSlots.delete(vehicleNumber)
     console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)
     return freeSlots
 }
 
 export const printParkingLot = () => {
-    const sortedMap = new Map([...vacantSlots.entries()].sort((a, b) => a[1] - b[1]));
+    const sortedMap = new Map([...occupiedSlots.entries()].sort((a, b) => a[1] - b[1]));
     console.log(`Slot No.    Registration No.`)
     sortedMap.forEach((key, value) => {
         console.log(`${key}           ${value}`)
     })
+    return {occupiedSlots, freeSlots}
 }
