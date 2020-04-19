@@ -1,2 +1,5 @@
-#!/bin/bash
-node './dist/app.js' $1
+#!/usr/bin/env bash
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+
+node $DIR/../dist/app.js $1
