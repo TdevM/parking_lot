@@ -27,7 +27,7 @@ const generateCommandsFromInputLines = (line: string) => {
 
 export async function processLineByLine(filePath: string) {
     try {
-        const fileStream = fs.createReadStream(path.join(__dirname, filePath));
+        const fileStream = fs.createReadStream(filePath);
         const rl = readline.createInterface({
             input: fileStream,
             crlfDelay: Infinity

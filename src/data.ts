@@ -48,8 +48,8 @@ export const removeVehicle = (vehicleNumber: string, hours: number) => {
 
 export const printParkingLot = () => {
     const sortedMap = new Map([...vacantSlots.entries()].sort((a, b) => a[1] - b[1]));
-    console.log(`Slot No.  Registration No.\n`)
+    console.log(`Slot No.    Registration No.`)
     sortedMap.forEach((key, value) => {
-        console.log(`${key}   ${value}\n`)
+        console.log(`${key}           ${value}`)
     })
 }
