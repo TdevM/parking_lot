@@ -4,7 +4,7 @@ npm install
 echo 'Running tests'
 npm run test
 echo 'Transpile typescript into JavaScript'
-tsc
+npm run transpile
 
 echo 'Finishing setup...'
 echo 'Setup complete.'

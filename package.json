@@ -4,7 +4,11 @@
   "description": "Parking lot app.",
   "main": "index.js",
   "scripts": {
+    "transpile": "tsc",
     "test": "jest"
+  },
+  "engines": {
+    "node": "8"
   },
   "keywords": [],
   "author": "tdevm",
