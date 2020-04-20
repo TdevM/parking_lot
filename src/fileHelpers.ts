@@ -32,10 +32,11 @@ export async function processLineByLine(filePath: string) {
             input: fileStream,
             crlfDelay: Infinity
         });
-        for await (const line of rl) {
-            // Each line in input.txt will be successively available here as `line`.
+
+        rl.on('line', function (line) {
             generateCommandsFromInputLines(line)
-        }
+        });
+
     } catch (e) {
         throw new Error(e)
     }
